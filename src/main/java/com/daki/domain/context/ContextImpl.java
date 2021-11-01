@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.daki.domain.validator.context;
+package com.daki.domain.context;
 
 import com.daki.domain.exception.DomainException;
 import java.util.Collection;
@@ -13,6 +13,7 @@ import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.support.GenericBeanDefinition;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -23,13 +24,14 @@ import org.springframework.data.repository.support.Repositories;
  * @author lucas
  */
 @Configuration
-public class ContextImpl implements IContext {
+public class ContextImpl implements ApplicationContextAware, IContext {
 
-    private ApplicationContext applicationContext;
+    private static ApplicationContext applicationContext;
 
-    private Repositories repositories;
+    private static Repositories repositories;
 
     
+    @Override
     public void setApplicationContext(final ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
         this.repositories = new Repositories(applicationContext);

@@ -23,16 +23,22 @@ public abstract class AbstractController<S, C> {
     @Autowired
     private HttpServletRequest request;
     
-    private Class<S> serviceClass;
+    private final S serviceClazz;
     
-    private Class<C> converterClass;
+    private final C converterClazz;
 
-    protected  S getServiceClass() {
-        return CDIProviderFactory.getCDIProvider().getReference(serviceClass);
+    public AbstractController(S serviceClazz, C converterClazz) {
+        this.serviceClazz = serviceClazz;
+        this.converterClazz = converterClazz;
     }
     
-    protected C getConverterClass(){
-        return CDIProviderFactory.getCDIProvider().getReference(converterClass);
+
+    protected  S getService() {
+        return serviceClazz;
+    }
+    
+    protected C getConverter(){
+        return converterClazz;
     }
     
     protected ResponseEntity okResponse() {

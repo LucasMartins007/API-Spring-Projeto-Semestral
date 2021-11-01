@@ -5,6 +5,7 @@
 package com.daki.api.controller.converter;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
 /**
  *
@@ -12,12 +13,14 @@ import org.modelmapper.ModelMapper;
  * @param <D> Classe de DTO
  * @param <E> Classe de entidade
  */
+@Component
 public abstract class AbstractConverter<D, E> implements IConverter<D, E>{
     
-    final protected ModelMapper mapper;
+    ModelMapper mapper;
 
     public AbstractConverter(ModelMapper mapper) {
-        this.mapper = mapper;
+        ModelMapper map = new ModelMapper();
+        this.mapper = map;
     }
     
 }

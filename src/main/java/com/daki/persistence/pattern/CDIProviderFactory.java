@@ -9,7 +9,7 @@ import com.daki.domain.util.BeanUtil;
  */
 public class CDIProviderFactory {
     
-    private static final String CDIPROVIDERCLASSNAME = "com.smartbr.persistence.CDIUtil";
+    private static final String CDIPROVIDERCLASSNAME = "com.daki.persistence.util.CDIUtil";
     
     public static CDIProvider getCDIProvider() {
         return BeanUtil.createInstance(CDIPROVIDERCLASSNAME, Thread.currentThread().getContextClassLoader());

@@ -6,7 +6,10 @@ package com.daki.domain.service;
 
 
 import com.daki.domain.exception.DomainException;
-import com.daki.domain.validator.context.IContext;
+import com.daki.domain.context.IContext;
+import java.io.Serializable;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.Repository;
 
@@ -18,9 +21,15 @@ import org.springframework.data.repository.Repository;
  * @param <E> Classe de entidade
  *
  */
-public class AbstractService<E, I> {
+public abstract class AbstractService<E, I extends Serializable> {
     
-    protected Class<E> entityClazz;
+    private final Class<E> entityClazz;
+    
+     public AbstractService() {
+        Type[] actualTypeArguments = ((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments();
+        entityClazz = (Class<E>) actualTypeArguments[0];
+    }
+
     
     private IContext getContext() {
         return IContext.context();

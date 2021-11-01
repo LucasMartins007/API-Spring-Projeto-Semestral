@@ -11,7 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public abstract class Utils {
+public class Utils {
 
     public static boolean isEmpty(Object obj) {
         return ObjectUtils.isEmpty(obj);

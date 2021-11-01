@@ -2,7 +2,6 @@ package com.daki.domain.model;
 
 import com.daki.domain.model.enums.EnumSexo;
 import com.daki.domain.model.enums.EnumTipoPessoa;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -30,11 +29,11 @@ import lombok.Setter;
 @Entity
 @Table(name = "pessoa")
 @SequenceGenerator(name = "seq_pessoa", sequenceName = "seq_pessoa")
-public class Pessoa implements Serializable {
+public class Pessoa extends AbstractEntity<Integer> {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "gen_pessoa")
-    private Long id;
+    private Integer id;
     
     @Column(name = "nome")
     private String nome;

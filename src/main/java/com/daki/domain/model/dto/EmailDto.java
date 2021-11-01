@@ -4,7 +4,6 @@
  */
 package com.daki.domain.model.dto;
 
-import com.daki.domain.model.Email;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,16 +13,12 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class PessoaDto {
+public class EmailDto {
     
     private Integer id;
     
-    private String nome;
+    private String email;
     
-    private String cpf;
-    
-    private EmailDto email;
-    
-    private String senha;
+    private boolean ativo;
     
 }

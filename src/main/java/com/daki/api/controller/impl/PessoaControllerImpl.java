@@ -19,12 +19,16 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class PessoaControllerImpl extends AbstractController<PessoaService, PessoaConverter> implements PessoaController {
+
+    public PessoaControllerImpl(PessoaService serviceClazz, PessoaConverter converterClazz) {
+        super(serviceClazz, converterClazz);
+    }
     
     @Override
     public ResponseEntity<PessoaDto> salvar(PessoaDto pessoaDto) {
-        Pessoa pessoa = getConverterClass().convertToEntity(pessoaDto);
-        getServiceClass().salvarPessoa(pessoa);
-        return createCreatedResponse(getConverterClass().convertToDto(pessoa));
+        Pessoa pessoa = getConverter().convertToEntity(pessoaDto);
+        getService().salvarPessoa(pessoa);
+        return createCreatedResponse(getConverter().convertToDto(pessoa));
     }
 
 }
