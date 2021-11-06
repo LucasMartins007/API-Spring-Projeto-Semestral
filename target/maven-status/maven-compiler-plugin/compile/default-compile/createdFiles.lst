@@ -1,5 +1,5 @@
 com/daki/domain/model/enums/interfaces/IEnum.class
 com/daki/domain/model/enums/converter/AbstractEnumConverter.class
 com/daki/domain/model/enums/EnumTipoPessoa$EnumConverter.class
-com/daki/DakiApiApplication.class
 com/daki/domain/model/enums/EnumTipoPessoa.class
+com/daki/DakiApiApplication.class

@@ -10,6 +10,10 @@ package com.daki.domain.exception.enums;
  */
 public enum EnumDomainException {
  
+    TOKEN_NOT_VALID("Acesso expirado! Por favor, acesse novamente o sistema."),
+    ROLE_ACCESS_DENIED("Sua permissão de usuário proíbe realizar esta operação."),
+    USERNAME_REQUIRED("Obrigatório informar o usuário."),
+    LOGIN_NOT_FOUND("Usuário ou senha inválidos!"),
     CAMPOS_OBRIGATORIOS("Os seguintes campos são de preenchimento obrigatório:</br>{0}"),
     CAMPO_INVALIDO("O campo {0} foi preenchido de forma inválida, tente novamente. "),
     

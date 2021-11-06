@@ -34,6 +34,10 @@ public class ListUtil {
     public synchronized static boolean isNotNullOrEmpty(Collection<?> list) {
         return !isNullOrEmpty(list);
     }
+    
+    public synchronized static boolean isNotNullOrEmpty(List<?> list) {
+        return !isNullOrEmpty(list);
+    }
 
     public synchronized static boolean isNotNullOrEmpty(Object[] array) {
         return !isNullOrEmpty(array);

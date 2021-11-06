@@ -6,7 +6,7 @@ package com.daki.api.controller.impl;
 
 import com.daki.api.controller.AbstractController;
 import com.daki.api.controller.PessoaController;
-import com.daki.api.controller.converter.PessoaConverter;
+import com.daki.api.converter.PessoaConverter;
 import com.daki.domain.model.Pessoa;
 import com.daki.domain.model.dto.PessoaDto;
 import com.daki.domain.service.PessoaService;

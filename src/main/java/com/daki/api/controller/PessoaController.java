@@ -27,6 +27,6 @@ public interface PessoaController {
     final String TAG = "Pessoa";
     
     @PostMapping("salvar")
-    @ApiOperation(value = "Salvar um cliente", code = 201)
+    @ApiOperation(value = "Salvar um cliente", code = 201, tags = "Pessoa")
     public ResponseEntity<PessoaDto> salvar(@RequestBody PessoaDto pessoaDto);
 }

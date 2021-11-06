@@ -4,6 +4,7 @@
  */
 package com.daki.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,6 +17,9 @@ import lombok.Setter;
 public class UserAuthentication {
     
     private String token;
+    
+    @JsonProperty("refresh_token")
+    private String refreshToken;
     
     private String email;
     

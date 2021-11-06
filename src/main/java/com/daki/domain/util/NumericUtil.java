@@ -11,7 +11,7 @@ import java.math.BigDecimal;
  * @author lucas
  */
 public class NumericUtil {
-    
+
     public synchronized static boolean isEquals(BigDecimal one, BigDecimal other) {
         if (one != null && other == null) {
             return false;
@@ -21,6 +21,10 @@ public class NumericUtil {
             return one.compareTo(other) == 0;
         }
 
+    }
+
+    public static boolean isNumeric(String str) {
+        return str.matches("^-?[0-9]+(\\.[0-9]+)?$");
     }
 
     public synchronized static boolean isEquals(Number number, Number compareTo) {
@@ -122,6 +126,13 @@ public class NumericUtil {
 
     public synchronized static boolean isIntegerValue(Double value) {
         return value != null && value % 1 == 0;
+    }
+    
+    public static Integer parseInt(Object objVal) {
+        if (objVal != null) {
+            return parseInt(objVal.toString());
+        }
+        return null;
     }
 
 }

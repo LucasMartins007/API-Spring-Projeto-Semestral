@@ -4,9 +4,9 @@
  */
 package com.daki.api.controller;
 
-import com.daki.persistence.pattern.CDIProviderFactory;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -67,5 +67,9 @@ public abstract class AbstractController<S, C> {
     
     protected String getHeader(String name) {
         return request.getHeader(name);
+    }
+    
+    protected String getOrigin() {
+        return request.getHeader(HttpHeaders.ORIGIN);
     }
 }

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.daki.api.controller.converter;
+package com.daki.api.converter;
 
 import com.daki.domain.model.Email;
 import com.daki.domain.model.Pessoa;
