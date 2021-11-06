@@ -10,6 +10,7 @@ import com.daki.domain.service.PessoaService;
 import com.daki.domain.util.DateUtil;
 import com.daki.domain.util.DomainUtil;
 import com.daki.domain.validator.PessoaValidator;
+import com.daki.persistence.repository.PessoaRepository;
 import org.springframework.stereotype.Service;
 
 /**
@@ -30,8 +31,14 @@ public class PessoaServiceImpl extends AbstractService<Pessoa, Integer> implemen
         onPrepareInsert(pessoa);
         return getRepository().save(pessoa);
     }
-    
-    
+
+
+
+    public void onPrepareUpdate(Pessoa pessoa, Pessoa managedPessoa){
+    }
+
+
+
     public void onPrepareInsert(Pessoa pessoa){
         pessoaValidator.validateInsert(pessoa);
         pessoa.setDataInclusao(DateUtil.getDate());
@@ -40,9 +47,7 @@ public class PessoaServiceImpl extends AbstractService<Pessoa, Integer> implemen
         pessoa.setAtivo(true);
         
         pessoa.setNome(pessoa.getNome().toUpperCase());
-        pessoa.getEmails().forEach(email -> {
-            email.setEmail(email.getEmail().toUpperCase());
-        });
+        pessoa.getEmails().forEach(email -> email.setEmail(email.getEmail().toUpperCase()));
     }
     
 }

@@ -6,10 +6,13 @@ package com.daki.api.controller.impl;
 
 import com.daki.api.controller.AbstractController;
 import com.daki.api.controller.PessoaController;
+import com.daki.api.converter.Converter;
 import com.daki.api.converter.PessoaConverter;
 import com.daki.domain.model.Pessoa;
+import com.daki.domain.model.dto.PessoaAtualizacaoDto;
 import com.daki.domain.model.dto.PessoaDto;
 import com.daki.domain.service.PessoaService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,17 +21,21 @@ import org.springframework.web.bind.annotation.RestController;
  * @author lucas
  */
 @RestController
-public class PessoaControllerImpl extends AbstractController<PessoaService, PessoaConverter> implements PessoaController {
+public class PessoaControllerImpl extends AbstractController<PessoaService> implements PessoaController {
 
-    public PessoaControllerImpl(PessoaService serviceClazz, PessoaConverter converterClazz) {
-        super(serviceClazz, converterClazz);
+    public PessoaControllerImpl(PessoaService serviceClass) {
+        super(serviceClass);
     }
     
     @Override
     public ResponseEntity<PessoaDto> salvar(PessoaDto pessoaDto) {
-        Pessoa pessoa = getConverter().convertToEntity(pessoaDto);
+        Pessoa pessoa = converterDTOParaEntity(pessoaDto, Pessoa.class);
         getService().salvarPessoa(pessoa);
-        return createCreatedResponse(getConverter().convertToDto(pessoa));
+
+        PessoaDto dto = converterEntityParaDTO(pessoa, PessoaDto.class);
+
+        return  ResponseEntity.status(HttpStatus.CREATED).body(dto);
     }
+
 
 }

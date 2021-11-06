@@ -5,40 +5,41 @@
 package com.daki.api.controller;
 
 import javax.servlet.http.HttpServletRequest;
+
+import com.daki.api.converter.Converter;
+import com.daki.domain.model.AbstractEntity;
+import com.daki.domain.model.dto.system.AbstractDto;
+import com.daki.domain.service.IAbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
+import java.lang.reflect.ParameterizedType;
+import java.util.List;
+
 /**
  *
  * @author lucas
- * @param <S> Classe de serviço padrão da controller
- * @param <C> Classe de conversão padrão da controller
+ * @param <E> Classe de serviço padrão da controller
  */
 @Component
-public abstract class AbstractController<S, C> {
+public abstract class AbstractController<E extends IAbstractService> {
 
     @Autowired
     private HttpServletRequest request;
     
-    private final S serviceClazz;
-    
-    private final C converterClazz;
+    private final E serviceClass;
 
-    public AbstractController(S serviceClazz, C converterClazz) {
-        this.serviceClazz = serviceClazz;
-        this.converterClazz = converterClazz;
+
+    public AbstractController(E serviceClass) {
+        this.serviceClass = serviceClass;
     }
     
 
-    protected  S getService() {
-        return serviceClazz;
-    }
-    
-    protected C getConverter(){
-        return converterClazz;
+    protected E getService() {
+        return serviceClass;
     }
     
     protected ResponseEntity okResponse() {
@@ -71,5 +72,21 @@ public abstract class AbstractController<S, C> {
     
     protected String getOrigin() {
         return request.getHeader(HttpHeaders.ORIGIN);
+    }
+
+    protected <D extends AbstractDto<?>, E extends AbstractEntity> E converterDTOParaEntity(D dto, Class<E> clazzEntity) {
+        return Converter.converterDTOParaEntity(dto, clazzEntity);
+    }
+
+    protected <D extends AbstractDto<?>, E extends AbstractEntity> List<E> converterDTOParaEntity(List<D> dtos, Class<E> clazzEntity) {
+        return Converter.converterDTOParaEntity(dtos, clazzEntity);
+    }
+
+    protected <D extends AbstractDto<?>, E extends AbstractEntity> D converterEntityParaDTO(E entity, Class<D> clazzDto) {
+        return Converter.converterEntityParaDTO(entity, clazzDto);
+    }
+
+    protected <D extends AbstractDto<?>, E extends AbstractEntity> List<D> converterEntityParaDTO(List<E> entitys, Class<D> clazzDto) {
+        return Converter.converterEntityParaDTO(entitys, clazzDto);
     }
 }

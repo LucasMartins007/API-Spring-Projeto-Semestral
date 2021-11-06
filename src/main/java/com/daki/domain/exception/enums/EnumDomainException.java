@@ -13,6 +13,9 @@ public enum EnumDomainException {
     TOKEN_NOT_VALID("Acesso expirado! Por favor, acesse novamente o sistema."),
     ROLE_ACCESS_DENIED("Sua permissão de usuário proíbe realizar esta operação."),
     USERNAME_REQUIRED("Obrigatório informar o usuário."),
+    ENUM_NOT_FOUND("Enumerador não encontrado: {0}"),
+
+
     LOGIN_NOT_FOUND("Usuário ou senha inválidos!"),
     CAMPOS_OBRIGATORIOS("Os seguintes campos são de preenchimento obrigatório:</br>{0}"),
     CAMPO_INVALIDO("O campo {0} foi preenchido de forma inválida, tente novamente. "),

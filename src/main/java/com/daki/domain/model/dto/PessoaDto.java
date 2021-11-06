@@ -4,7 +4,10 @@
  */
 package com.daki.domain.model.dto;
 
-import com.daki.domain.model.Email;
+import com.daki.api.converter.TransientFieldDto;
+import com.daki.domain.model.dto.system.AbstractDto;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,9 +15,11 @@ import lombok.Setter;
  *
  * @author lucas
  */
-@Getter
-@Setter
-public class PessoaDto {
+@Data
+@EqualsAndHashCode(callSuper = false)
+public class PessoaDto extends AbstractDto<Integer> {
+
+    private static final long serialVersionUID = -5664201131943443401L;
     
     private Integer id;
     
@@ -23,7 +28,8 @@ public class PessoaDto {
     private String cpf;
     
     private EmailDto email;
-    
+
+    @TransientFieldDto
     private String senha;
     
 }
