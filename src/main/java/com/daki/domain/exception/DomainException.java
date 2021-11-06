@@ -18,4 +18,16 @@ public class DomainException extends RuntimeException {
         super(MessageFormat.format(message, args));
     }
 
+    @FunctionalInterface
+    public interface Check<T> {
+        T checked();
+    }
+
+    public static <T> T checked(Check<T> next) {
+        try {
+            return next.checked();
+        } catch (Exception e) {
+            throw new DomainException(e.getMessage());
+        }
+    }
 }

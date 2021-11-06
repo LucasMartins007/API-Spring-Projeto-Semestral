@@ -5,6 +5,7 @@
 package com.daki.domain.service;
 
 import com.daki.domain.model.Pessoa;
+import com.daki.domain.model.dto.PessoaDto;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Service;
  * @author lucas
  */
 @Service
-public interface PessoaService {
+public interface PessoaService extends IAbstractService<Pessoa, Integer, PessoaDto>{
     
     public Pessoa salvarPessoa(Pessoa pessoa);
 

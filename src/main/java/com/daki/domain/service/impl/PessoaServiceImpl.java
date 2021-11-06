@@ -5,12 +5,15 @@
 package com.daki.domain.service.impl;
 
 import com.daki.domain.model.Pessoa;
-import com.daki.domain.service.AbstractService;
+import com.daki.domain.model.dto.PessoaDto;
+import com.daki.domain.service.AbstractServiceImpl;
 import com.daki.domain.service.PessoaService;
 import com.daki.domain.util.DateUtil;
 import com.daki.domain.util.DomainUtil;
 import com.daki.domain.validator.PessoaValidator;
 import com.daki.persistence.repository.PessoaRepository;
+import com.google.common.util.concurrent.AbstractService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 /**
@@ -18,20 +21,17 @@ import org.springframework.stereotype.Service;
  * @author lucas
  */
 @Service
-public class PessoaServiceImpl extends AbstractService<Pessoa, Integer> implements PessoaService {
+@RequiredArgsConstructor
+public class PessoaServiceImpl extends AbstractServiceImpl<Pessoa, Integer, PessoaDto> implements PessoaService {
     
     private final PessoaValidator pessoaValidator;
 
-    public PessoaServiceImpl(PessoaValidator pessoaValidator) {
-        this.pessoaValidator = pessoaValidator;
-    }
     
     @Override
     public Pessoa salvarPessoa(Pessoa pessoa) {
         onPrepareInsert(pessoa);
         return getRepository().save(pessoa);
     }
-
 
 
     public void onPrepareUpdate(Pessoa pessoa, Pessoa managedPessoa){

@@ -14,6 +14,9 @@ public enum EnumDomainException {
     ROLE_ACCESS_DENIED("Sua permissão de usuário proíbe realizar esta operação."),
     USERNAME_REQUIRED("Obrigatório informar o usuário."),
     ENUM_NOT_FOUND("Enumerador não encontrado: {0}"),
+    REPOSITORY_IMPLEMENTS_NOT_FOUND("Repository de {0} não possui implementação {1}."),
+    ENTITY_TYPE_INCOMPATIBLE("Tipo [{0}], incompatível com o tipo de valor [{1}]"),
+
 
 
     LOGIN_NOT_FOUND("Usuário ou senha inválidos!"),
@@ -45,9 +48,8 @@ public enum EnumDomainException {
     
     
     ;
-    
-    
-    
+
+
     private final String message;
 
     private EnumDomainException(String message) {
